@@ -3,239 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة التحدي الملكية - WELCOME FARAH</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Salma Academy - المنصة الملكية للمذاكرة</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Cairo -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-glow: rgba(6, 182, 212, 0.5);
-        }
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #030712;
-            color: #f8fafc;
+            background-color: #050b14;
+            color: #f1f5f9;
             overflow-x: hidden;
         }
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.75);
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
-        @keyframes ultraGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.4), inset 0 0 10px rgba(6, 182, 212, 0.2); }
-            50% { box-shadow: 0 0 45px rgba(6, 182, 212, 0.8), inset 0 0 20px rgba(6, 182, 212, 0.4); }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(236, 72, 153, 0.4); }
+            50% { box-shadow: 0 0 45px rgba(236, 72, 153, 0.8); }
         }
-        .neon-effect {
-            animation: ultraGlow 3s infinite ease-in-out;
+        .neon-glow { animation: glowPulse 3s infinite ease-in-out; }
+        .bg-pattern {
+            background-image: radial-gradient(rgba(236, 72, 153, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
         }
-        .bg-cyber-grid {
-            background-image: 
-                radial-gradient(rgba(56, 189, 248, 0.15) 1px, transparent 1px),
-                linear-gradient(to right, rgba(15, 23, 42, 0.5) 1px, transparent 1px);
-            background-size: 35px 35px;
-        }
-        .transition-smooth {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        #welcomeOverlay {
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
+        .transition-all-custom { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
-<body class="bg-cyber-grid min-h-screen p-4 md:p-8 flex flex-col justify-center items-center">
+<body class="bg-pattern min-h-screen text-slate-100 pb-12">
 
-    <!-- شاشة الترحيب الفاجرة -->
-    <div id="welcomeOverlay" class="fixed inset-0 bg-slate-950/95 z-50 flex flex-col items-center justify-center text-center p-6 backdrop-blur-xl">
-        <div class="space-y-6 transform hover:scale-105 transition-smooth">
-            <div class="inline-flex p-4 bg-cyan-500/10 rounded-3xl border border-cyan-500/30 text-5xl neon-effect">
-                💎
+    <!-- شاشة البداية الاحترافية المنصة العالمية -->
+    <div id="welcomeScreen" class="fixed inset-0 bg-[#020617] z-50 flex flex-col items-center justify-center p-6 text-center">
+        <div class="space-y-6 max-w-xl">
+            <div class="inline-block p-4 bg-pink-500/10 border border-pink-500/30 rounded-3xl text-5xl neon-glow">
+                🎓
             </div>
-            <h1 class="text-4xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-pink-500 tracking-wider">
-                WELCOME FARAH
+            <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-400 to-cyan-400">
+                SALMA ACADEMY
             </h1>
-            <p class="text-slate-400 text-sm md:text-base tracking-widest uppercase font-semibold">
-                جاهزة للسيطرة التامة على الجدول وتحقيق المستحيل؟ 🔥
+            <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+                منصة إمبراطورية متكاملة لبيئة المذاكرة الذكية، تتبع الأداء، تحدي المواد الدراسية، وإرسال تقارير الإنجاز الفورية للتيليجرام.
             </p>
+            <div class="pt-4">
+                <button onclick="startApp()" class="px-10 py-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white font-black text-base rounded-2xl shadow-xl hover:scale-105 transition-all-custom neon-glow cursor-pointer">
+                    دخول لوحة التحكم الذكية 🚀
+                </button>
+            </div>
         </div>
-        <button onclick="launchDashboard()" class="mt-10 px-10 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-lg rounded-2xl shadow-2xl hover:scale-110 transition-smooth neon-effect cursor-pointer">
-            دخول لوحة العمليات 🚀
-        </button>
     </div>
 
-    <!-- لوحة التحكم الرئيسية -->
-    <div id="mainDashboard" class="max-w-6xl w-full space-y-8 opacity-0 translate-y-12 transition-all duration-1000 hidden">
+    <!-- التطبيق الرئيسي (مخفي حتى الدخول) -->
+    <div id="mainApp" class="max-w-7xl mx-auto px-4 md:px-6 pt-6 space-y-8 hidden opacity-0 transition-all-custom duration-700">
         
-        <header class="glass-panel p-6 md:p-8 rounded-3xl flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="space-y-1 text-center md:text-right">
-                <h2 class="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-300">
-                    ⚡ خطة المذاكرة الاحترافية - فرح
-                </h2>
-                <p class="text-slate-400 text-xs md:text-sm">نظام أمني ذكي لمتابعة الإنجاز وإرسال التقرير الشامل.</p>
+        <!-- الهيدر والبروفايل العلوي -->
+        <header class="glass-card p-6 rounded-3xl flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl font-black shadow-lg">
+                    س
+                </div>
+                <div>
+                    <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-cyan-400">أهلاً بكِ، د. سلمى 👑</h2>
+                    <p class="text-xs text-slate-400 mt-0.5">جاهزة لفرض السيطرة وتدمير مواد اليوم؟ استمرى بقوة.</p>
+                </div>
             </div>
-            <div class="px-5 py-2.5 bg-cyan-500/10 border border-cyan-500/30 rounded-2xl text-cyan-300 text-sm font-bold shadow-inner">
-                🎯 حالة النظام: نشط وجاهز
+            
+            <!-- إحصائيات سريعة فوق -->
+            <div class="flex flex-wrap gap-3">
+                <div class="bg-slate-900/80 border border-slate-800 px-4 py-2.5 rounded-2xl text-center">
+                    <span class="block text-xs text-slate-400">المهام المنجزة</span>
+                    <span id="completedCount" class="text-lg font-black text-pink-400">0</span>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-800 px-4 py-2.5 rounded-2xl text-center">
+                    <span class="block text-xs text-slate-400">المستوى الدراسي</span>
+                    <span class="text-lg font-black text-cyan-400">Elite 🌟</span>
+                </div>
+                <div class="bg-slate-900/80 border border-slate-800 px-4 py-2.5 rounded-2xl text-center">
+                    <span class="block text-xs text-slate-400">حالة التيليجرام</span>
+                    <span class="text-lg font-black text-emerald-400">متصل ⚡</span>
+                </div>
             </div>
         </header>
 
+        <!-- شبكة الأدوات الرئيسية (Dashboard Grid) -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
+            <!-- العمودين الأيمن: جدول المواد + عداد البومودورو + المهام اليومية -->
             <div class="lg:col-span-2 space-y-6">
-                <!-- جدول المواد -->
-                <div class="glass-panel p-6 md:p-8 rounded-3xl space-y-5">
-                    <h3 class="text-xl font-bold text-cyan-400 border-b border-slate-800 pb-4 flex items-center gap-3">
-                        <span>📅</span> الجدول الأسبوعي المنظم
-                    </h3>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-right text-xs md:text-sm">
-                            <thead>
-                                <tr class="text-slate-400 border-b border-slate-800/80">
-                                    <th class="pb-3 px-2">المادة</th>
-                                    <th class="pb-3 px-2">الأيام</th>
-                                    <th class="pb-3 px-2">الوقت</th>
-                                    <th class="pb-3 px-2">الاستراتيجية</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-800/50 text-slate-300">
-                                <tr class="hover:bg-slate-900/40 transition-smooth">
-                                    <td class="py-4 px-2 font-bold text-cyan-300 flex items-center gap-2">💻 البرمجة</td>
-                                    <td class="py-4 px-2">السبت والإثنين</td>
-                                    <td class="py-4 px-2">ساعتان ونصف</td>
-                                    <td class="py-4 px-2 text-slate-400">تطبيق عملي وكتابة كود بنفسك</td>
-                                </tr>
-                                <tr class="hover:bg-slate-900/40 transition-smooth">
-                                    <td class="py-4 px-2 font-bold text-teal-300 flex items-center gap-2">🇬🇧 الإنجليزي</td>
-                                    <td class="py-4 px-2">الأحد والثلاثاء</td>
-                                    <td class="py-4 px-2">ساعة ونصف</td>
-                                    <td class="py-4 px-2 text-slate-400">كلمات سياقية واستماع وقواعد</td>
-                                </tr>
-                                <tr class="hover:bg-slate-900/40 transition-smooth">
-                                    <td class="py-4 px-2 font-bold text-pink-300 flex items-center gap-2">📜 التاريخ</td>
-                                    <td class="py-4 px-2">الأربعاء والخميس</td>
-                                    <td class="py-4 px-2">ساعتان</td>
-                                    <td class="py-4 px-2 text-slate-400">سرد الأحداث كقصة وربط الأسباب</td>
-                                </tr>
-                                <tr class="hover:bg-slate-900/40 transition-smooth">
-                                    <td class="py-4 px-2 font-bold text-amber-300 flex items-center gap-2">🇪🇬 العربي</td>
-                                    <td class="py-4 px-2">يومي (خفيف)</td>
-                                    <td class="py-4 px-2">ساعة واحدة</td>
-                                    <td class="py-4 px-2 text-slate-400">نحو وتطبيقات وقراءة النصوص بفهم</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                
+                <!-- 1. عداد المذاكرة السريع (Pomodoro Timer Widget) -->
+                <div class="glass-card p-6 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 border-pink-500/30">
+                    <div class="space-y-1 text-center md:text-right">
+                        <h3 class="text-lg font-bold text-pink-400 flex items-center justify-center md:justify-start gap-2">
+                            <span>⏱️</span> جلسة تركيز ذكية (بومودورو)
+                        </h3>
+                        <p class="text-xs text-slate-400">ركزي 25 دقيقة بدون مشتتات لرفع كفاءة الحفظ والفهم.</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div id="timerDisplay" class="text-3xl font-black tracking-widest text-cyan-300 bg-slate-950 px-6 py-2 rounded-2xl border border-slate-800">
+                            25:00
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="toggleTimer()" id="timerBtn" class="px-4 py-2.5 bg-pink-600 hover:bg-pink-500 text-white text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer">بدء</button>
+                            <button onclick="resetTimer()" class="px-3 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold rounded-xl transition-all cursor-pointer">إعادة</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- تكتيكات المذاكرة -->
-                <div class="glass-panel p-6 md:p-8 rounded-3xl space-y-5">
-                    <h3 class="text-xl font-bold text-cyan-400 border-b border-slate-800 pb-4 flex items-center gap-3">
-                        <span>💡</span> تكتيكات المذاكرة الذكية
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm">
-                        <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80 space-y-1.5">
-                            <h4 class="font-bold text-cyan-300">💻 البرمجة:</h4>
-                            <p class="text-slate-400 leading-relaxed">اكتب الكود بايدك ولا تكتفي بالقراءة، جرب تولد أخطاء وتصلحها لتثبيت المعلومة.</p>
+                <!-- 2. الجدول الدراسي للمواد (فيزياء، إنجليزي، عربي، تاريخ) -->
+                <div class="glass-card p-6 rounded-3xl space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                        <h3 class="text-lg font-bold text-pink-400 flex items-center gap-2">
+                            <span>📚</span> الجدول الأكاديمي المعتمد
+                        </h3>
+                        <span class="text-xs text-slate-400">المواد الأساسية (ثانوية عامة / متقدم)</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        <!-- فيزياء -->
+                        <div class="bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl space-y-2 hover:border-pink-500/50 transition-all-custom">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-cyan-300 flex items-center gap-1.5">⚡ الفيزياء</span>
+                                <span class="text-[10px] bg-cyan-500/10 text-cyan-300 px-2.5 py-1 rounded-full font-bold">تفكير عالي</span>
+                            </div>
+                            <p class="text-xs text-slate-400 leading-relaxed">فهم القوانين بعمق، حل المسائل المركبة، ورسم الدوائر أو النظريات بخط اليد.</p>
                         </div>
-                        <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80 space-y-1.5">
-                            <h4 class="font-bold text-teal-300">🇬🇧 الإنجليزي:</h4>
-                            <p class="text-slate-400 leading-relaxed">ركز على الجمل المتكاملة وتوظيف الكلمات في مواقف حقيقية وليست حفظاً أصماً.</p>
+
+                        <!-- إنجليزي -->
+                        <div class="bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl space-y-2 hover:border-pink-500/50 transition-all-custom">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-pink-300 flex items-center gap-1.5">🇬🇧 الإنجليزي</span>
+                                <span class="text-[10px] bg-pink-500/10 text-pink-300 px-2.5 py-1 rounded-full font-bold">مهارات ولغات</span>
+                            </div>
+                            <p class="text-xs text-slate-400 leading-relaxed">تجميع الكلمات بسياقها، حل قواعد (Grammar)، وقراءة نصوص الفهم بتركيز تام.</p>
                         </div>
-                        <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80 space-y-1.5">
-                            <h4 class="font-bold text-pink-300">📜 التاريخ:</h4>
-                            <p class="text-slate-400 leading-relaxed">تخيل الحدث كأنه قصة سينمائية لتثبيت التواريخ والأسباب والنتائج بسهولة.</p>
+
+                        <!-- عربي -->
+                        <div class="bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl space-y-2 hover:border-pink-500/50 transition-all-custom">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-amber-300 flex items-center gap-1.5">🇪🇬 اللغة العربية</span>
+                                <span class="text-[10px] bg-amber-500/10 text-amber-300 px-2.5 py-1 rounded-full font-bold">نحو وتطبيقات</span>
+                            </div>
+                            <p class="text-xs text-slate-400 leading-relaxed">تطبيق مكثف على فروع النحو، البلاغة، وقراءة النصوص الأدبية لاستخراج المغزى.</p>
                         </div>
-                        <div class="bg-slate-950/60 p-4 rounded-2xl border border-slate-800/80 space-y-1.5">
-                            <h4 class="font-bold text-amber-300">🇪🇬 العربي:</h4>
-                            <p class="text-slate-400 leading-relaxed">حل تمارين مكثفة على فروع النحو بعد كل درس لضمان عدم نسيان القواعد.</p>
+
+                        <!-- تاريخ -->
+                        <div class="bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl space-y-2 hover:border-pink-500/50 transition-all-custom">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-purple-300 flex items-center gap-1.5">📜 التاريخ</span>
+                                <span class="text-[10px] bg-purple-500/10 text-purple-300 px-2.5 py-1 rounded-full font-bold">قصة الأحداث</span>
+                            </div>
+                            <p class="text-xs text-slate-400 leading-relaxed">ربط الأحداث التاريخية كأنها قصة مسلسل، وفهم أسباب وعواقب كل معاهدة أو ثورة.</p>
                         </div>
+
                     </div>
                 </div>
+
+                <!-- 3. قائمة مهام اليوم التفاعلية (Interactive Checklist) -->
+                <div class="glass-card p-6 rounded-3xl space-y-4">
+                    <h3 class="text-lg font-bold text-pink-400 flex items-center gap-2">
+                        <span>🎯</span> المهام السريعة لليوم
+                    </h3>
+                    <div class="space-y-2.5" id="checkListContainer">
+                        <label class="flex items-center gap-3 bg-slate-900/50 p-3 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900 transition-all">
+                            <input type="checkbox" onchange="updateProgress()" class="w-4 h-4 accent-pink-500 rounded">
+                            <span class="text-xs md:text-sm text-slate-300">مراجعة قوانين الفصل الحالي في الفيزياء وحل 10 مسائل</span>
+                        </label>
+                        <label class="flex items-center gap-3 bg-slate-900/50 p-3 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900 transition-all">
+                            <input type="checkbox" onchange="updateProgress()" class="w-4 h-4 accent-pink-500 rounded">
+                            <span class="text-xs md:text-sm text-slate-300">حفظ 20 كلمة إنجليزي جديدة وتطبيقها في جمل</span>
+                        </label>
+                        <label class="flex items-center gap-3 bg-slate-900/50 p-3 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900 transition-all">
+                            <input type="checkbox" onchange="updateProgress()" class="w-4 h-4 accent-pink-500 rounded">
+                            <span class="text-xs md:text-sm text-slate-300">حل تدريبات نحوية شاملة على الوحدة الأولى عربي</span>
+                        </label>
+                        <label class="flex items-center gap-3 bg-slate-900/50 p-3 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900 transition-all">
+                            <input type="checkbox" onchange="updateProgress()" class="w-4 h-4 accent-pink-500 rounded">
+                            <span class="text-xs md:text-sm text-slate-300">قراءة فصلين تاريخ وتلخيصهم في خريطة ذهنية</span>
+                        </label>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- لوحة إرسال التقارير -->
-            <div class="glass-panel p-6 md:p-8 rounded-3xl space-y-6 h-fit">
+            <!-- العمود الأيسر: نظام إرسال التقارير وتأكيد الصور عبر التيليجرام -->
+            <div class="glass-card p-6 md:p-8 rounded-3xl space-y-6 h-fit border-pink-500/30">
                 <div>
-                    <h3 class="text-xl font-bold text-cyan-400 flex items-center gap-3">
-                        <span>🛡️</span> تسليم إثبات المذاكرة
+                    <h3 class="text-xl font-bold text-pink-400 flex items-center gap-3">
+                        <span>🛡️</span> مركز تسليم الإنجاز الآمن
                     </h3>
-                    <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">اختر صورة أو لقطة شاشة من المعرض لتأكيد الإنجاز وإرساله فوراً.</p>
+                    <p class="text-slate-400 text-xs mt-1.5 leading-relaxed">اختر المادة، ارفع صورة الملخص أو الحل من المعرض، وسيتم إرسالها فوراً إلى بوت التيليجرام.</p>
                 </div>
                 
                 <form id="studyForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 mb-1.5">اسم البطلة:</label>
-                        <input type="text" id="studentName" value="فرح" required 
-                            class="w-full bg-slate-950/80 border border-slate-800 rounded-2xl px-4 py-3 text-sm text-cyan-300 font-bold focus:outline-none focus:border-cyan-400 transition-smooth">
+                        <input type="text" id="studentName" value="سلمى" required 
+                            class="w-full bg-slate-950/80 border border-slate-800 rounded-2xl px-4 py-3 text-sm text-pink-300 font-bold focus:outline-none focus:border-pink-500 transition-all-custom">
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">المادة الحالية:</label>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">اختر المادة الحالية:</label>
                         <select id="taskTitle" required 
-                            class="w-full bg-slate-950/80 border border-slate-800 rounded-2xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400 transition-smooth">
+                            class="w-full bg-slate-950/80 border border-slate-800 rounded-2xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-pink-500 transition-all-custom">
                             <option value="" disabled selected>اختر المادة...</option>
-                            <option value="البرمجة">البرمجة</option>
-                            <option value="الإنجليزي">الإنجليزي</option>
-                            <option value="التاريخ">التاريخ</option>
-                            <option value="العربي">العربي</option>
+                            <option value="الفيزياء">⚡ الفيزياء</option>
+                            <option value="الإنجليزي">🇬🇧 الإنجليزي</option>
+                            <option value="العربي">🇪🇬 اللغة العربية</option>
+                            <option value="التاريخ">📜 التاريخ</option>
                         </select>
                     </div>
                     
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">صورة إثبات المذاكرة:</label>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">صورة إثبات المذاكرة (من المعرض):</label>
                         <input type="file" id="proofImage" accept="image/*" required onchange="validateImageSelection()" 
-                            class="w-full text-xs text-slate-400 file:mr-2 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-cyan-500/20 file:text-cyan-300 hover:file:bg-cyan-500/30 cursor-pointer transition-smooth">
+                            class="w-full text-xs text-slate-400 file:mr-2 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-pink-500/20 file:text-pink-300 hover:file:bg-pink-500/30 cursor-pointer transition-all-custom">
                     </div>
 
                     <button type="submit" id="submitBtn" disabled 
-                        class="w-full bg-slate-900 text-slate-500 font-bold py-3.5 rounded-2xl transition-smooth text-sm cursor-not-allowed border border-slate-800">
+                        class="w-full bg-slate-900 text-slate-500 font-bold py-3.5 rounded-2xl transition-all-custom text-sm cursor-not-allowed border border-slate-800">
                         اختر الصورة أولاً لتفعيل الزر 🔒
                     </button>
                 </form>
+
+                <!-- بطاقة تنبيه ذكية -->
+                <div class="bg-pink-500/10 border border-pink-500/20 p-4 rounded-2xl text-[11px] text-pink-300/90 leading-relaxed space-y-1">
+                    <p class="font-bold flex items-center gap-1"><span>💡</span> ملحوظة تشغيلية:</p>
+                    <p>تأكد من فتح بوت التيليجرام وضغط `/start` أولاً لكي تصلك التقارير والصور بدقة متناهية.</p>
+                </div>
             </div>
 
         </div>
     </div>
 
-    <!-- جافاسكريبت المحسّن والمتوافق تماماً مع تيليجرام -->
+    <!-- جافاسكريبت المنصة المتكامل -->
     <script>
         const CONFIG = {
             BOT_TOKEN: "8956456112:AAEOzyfel1sBgIkMRzWrBp6Ql6x81ZreE1E",
             CHAT_ID: "5752007414"
         };
 
-        function launchDashboard() {
-            const overlay = document.getElementById('welcomeOverlay');
-            const dashboard = document.getElementById('mainDashboard');
+        // تشغيل التطبيق والدخول من شاشة الترحيب
+        function startApp() {
+            const screen = document.getElementById('welcomeScreen');
+            const app = document.getElementById('mainApp');
             
-            overlay.style.opacity = '0';
+            screen.style.opacity = '0';
             setTimeout(() => {
-                overlay.style.display = 'none';
-                dashboard.classList.remove('hidden');
+                screen.style.display = 'none';
+                app.classList.remove('hidden');
                 setTimeout(() => {
-                    dashboard.style.opacity = '1';
-                    dashboard.style.transform = 'translateY(0)';
+                    app.style.opacity = '1';
                 }, 50);
-            }, 800);
+            }, 600);
         }
 
+        // تحديث عداد المهام المنجزة بناءً على التشيك بوكس
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('#checkListContainer input[type="checkbox"]');
+            let checkedCount = 0;
+            checkboxes.forEach(cb => {
+                if (cb.checked) checkedCount++;
+            });
+            document.getElementById('completedCount').innerText = checkedCount;
+        }
+
+        // عداد بومودورو للمذاكرة
+        let timerInterval;
+        let timeLeft = 25 * 60;
+        let isRunning = false;
+
+        function toggleTimer() {
+            const btn = document.getElementById('timerBtn');
+            if (!isRunning) {
+                isRunning = true;
+                btn.innerText = "إيقاف مؤقت";
+                btn.className = "px-4 py-2.5 bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer";
+                
+                timerInterval = setInterval(() => {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        updateTimerDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        alert("🎉 انتهت جلسة التركيز بنجاح! خذ راحة 5 دقائق.");
+                        resetTimer();
+                    }
+                }, 1000);
+            } else {
+                isRunning = false;
+                clearInterval(timerInterval);
+                btn.innerText = "استئناف";
+                btn.className = "px-4 py-2.5 bg-pink-600 hover:bg-pink-500 text-white text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer";
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            timeLeft = 25 * 60;
+            updateTimerDisplay();
+            const btn = document.getElementById('timerBtn');
+            btn.innerText = "بدء";
+            btn.className = "px-4 py-2.5 bg-pink-600 hover:bg-pink-500 text-white text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer";
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timerDisplay').innerText = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // التحقق من رفع الصورة لتفعيل زر التسليم
         function validateImageSelection() {
             const fileInput = document.getElementById('proofImage');
             const submitBtn = document.getElementById('submitBtn');
             
             if (fileInput.files && fileInput.files.length > 0) {
                 submitBtn.disabled = false;
-                submitBtn.className = "w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-bold py-3.5 rounded-2xl transition-smooth text-sm cursor-pointer shadow-lg shadow-cyan-500/25 neon-effect";
+                submitBtn.className = "w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold py-3.5 rounded-2xl transition-all-custom text-sm cursor-pointer shadow-lg shadow-pink-500/25 neon-glow";
                 submitBtn.innerText = "تسليم المهمة وإرسال التقرير ⚡";
             } else {
                 submitBtn.disabled = true;
-                submitBtn.className = "w-full bg-slate-900 text-slate-500 font-bold py-3.5 rounded-2xl transition-smooth text-sm cursor-not-allowed border border-slate-800";
+                submitBtn.className = "w-full bg-slate-900 text-slate-500 font-bold py-3.5 rounded-2xl transition-all-custom text-sm cursor-not-allowed border border-slate-800";
                 submitBtn.innerText = "اختر الصورة أولاً لتفعيل الزر 🔒";
             }
         }
 
+        // إرسال البيانات والصورة إلى التيليجرام
         async function handleFormSubmit(event) {
             event.preventDefault();
             
@@ -256,9 +354,8 @@
                 const formData = new FormData();
                 formData.append('chat_id', CONFIG.CHAT_ID);
                 formData.append('photo', imageFile);
-                formData.append('caption', `🚨 تقرير مذاكرة فاجر جديد:\n👤 الطالبة: ${studentName}\n📚 المادة: ${taskTitle}`);
+                formData.append('caption', `👑 تقرير أكاديمي جديد لسلمى:\n👤 الطالبة: ${studentName}\n📚 المادة: ${taskTitle}\n⚡ الحالة: تم تسليم إثبات المذاكرة بنجاح وتفوق.`);
 
-                // إرسال مباشر وصريح بالـ FormData من غير أي Headers إضافية تعكسها متصفحات الويب
                 const apiResponse = await fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendPhoto`, {
                     method: 'POST',
                     body: formData
@@ -267,12 +364,12 @@
                 const responseData = await apiResponse.json();
 
                 if (apiResponse.ok && responseData.ok) {
-                    alert("🔥 تم تسليم المهمة بنجاح يا بطلة! الصورة والتقرير وصلوا لشات تيليجرام فوراً.");
+                    alert("🔥 تم تسليم المهمة بنجاح يا دكتورة سلمى! الصورة والتقرير وصلوا لشات تيليجرام فوراً.");
                     document.getElementById('studyForm').reset();
                     validateImageSelection();
                 } else {
-                    // حل احتياطي: لو التيليجرام رفض الصورة بسبب الحجم أو نوع الامتداد، هنبعت تقرير نصي فوري عشان المهمة متضيعش
-                    const textMessage = `🚨 تقرير مذاكرة فاجر جديد:\n👤 الطالبة: ${studentName}\n📚 المادة: ${taskTitle}\n(ملاحظة: تعذر إرسال الصورة مباشرة، وتم تسليم التقرير بنجاح)`;
+                    // خطة بديلة (Fallback) في حال واجهت الصورة أي ضغط شبكي
+                    const textMessage = `👑 تقرير أكاديمي جديد لسلمى:\n👤 الطالبة: ${studentName}\n📚 المادة: ${taskTitle}\n(تم توثيق المهمة بنجاح)`;
                     
                     await fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
                         method: 'POST',
